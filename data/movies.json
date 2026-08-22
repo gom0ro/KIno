@@ -1,0 +1,390 @@
+{
+  "movies": [
+    {
+      "id": "hroniki-pustoty",
+      "title": "Хроники Пустоты",
+      "originalTitle": "Chronicles of the Void",
+      "description": "Команда исследователей открывает портал в измерение, где время течёт вспять. Каждый шаг назад стирает частицу их памяти, и вернуться целыми уже невозможно.",
+      "year": 2024,
+      "genres": [
+        "Фантастика",
+        "Драма"
+      ],
+      "rating": 8.4,
+      "votes": 12400,
+      "duration": 137,
+      "ageRating": 16,
+      "director": "Анна Верещагина",
+      "cast": [
+        "Дмитрий Орлов",
+        "Софья Ким",
+        "Марк Северин",
+        "Елена Дорош"
+      ],
+      "country": "Россия",
+      "colors": [
+        "#1e3a5f",
+        "#6d28d9"
+      ],
+      "videoUrl": "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8",
+      "trending": true
+    },
+    {
+      "id": "glubina",
+      "title": "Глубина",
+      "originalTitle": "The Depth",
+      "description": "Экипаж батискафа обнаруживает на дне Марианской впадины станцию, исчезнувшую тридцать лет назад. Внутри всё сохранилось — кроме людей.",
+      "year": 2025,
+      "genres": [
+        "Триллер",
+        "Мистика"
+      ],
+      "rating": 8.1,
+      "votes": 8900,
+      "duration": 118,
+      "ageRating": 16,
+      "director": "Карлос Мендес",
+      "cast": [
+        "Игорь Савельев",
+        "Алиса Гринёва",
+        "Томас Рейнхардт"
+      ],
+      "country": "США",
+      "colors": [
+        "#062b3f",
+        "#0e7490"
+      ],
+      "videoUrl": "https://test-streams.mux.dev/tos_ismc/main.m3u8",
+      "isNew": true
+    },
+    {
+      "id": "poslednij-rassvet",
+      "title": "Последний рассвет",
+      "originalTitle": "The Last Sunrise",
+      "description": "После того как солнце начало гаснуть, человечество строит гигантское искусственное светило. Инженер проекта находит в расчётах ошибку, о которой молчат все.",
+      "year": 2023,
+      "genres": [
+        "Драма",
+        "Фантастика"
+      ],
+      "rating": 7.9,
+      "votes": 15200,
+      "duration": 126,
+      "ageRating": 12,
+      "director": "Юки Танака",
+      "cast": [
+        "Павел Громов",
+        "Мия Сато",
+        "Ольга Литвинова"
+      ],
+      "country": "Япония",
+      "colors": [
+        "#7c2d12",
+        "#f59e0b"
+      ],
+      "videoUrl": "https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8"
+    },
+    {
+      "id": "ten-nad-gorodom",
+      "title": "Тень над городом",
+      "originalTitle": "Shadow Over the City",
+      "description": "Детектив отдела тяжких преступлений расследует серию исчезновений в городе, где каждую ночь отключают уличное освещение. Единственная улика — тень, попавшая на камеры.",
+      "year": 2022,
+      "genres": [
+        "Детектив",
+        "Нуар"
+      ],
+      "rating": 7.6,
+      "votes": 9700,
+      "duration": 109,
+      "ageRating": 16,
+      "director": "Виктор Штейн",
+      "cast": [
+        "Артур Валеев",
+        "Нина Крылова",
+        "Георгий Ланской"
+      ],
+      "country": "Великобритания",
+      "colors": [
+        "#111827",
+        "#374151"
+      ],
+      "videoUrl": "https://demo.unified-streaming.com/k8s/features/stable/video/tears-of-steel/tears-of-steel.ism/.m3u8"
+    },
+    {
+      "id": "severnoe-siyanie",
+      "title": "Северное сияние",
+      "originalTitle": "Northern Lights",
+      "description": "Полярник и метеоролог оказываются отрезанными от мира на год полярной ночью. Между ними рождается история любви, которую испытает холодом сама Арктика.",
+      "year": 2023,
+      "genres": [
+        "Мелодрама",
+        "Драма"
+      ],
+      "rating": 7.2,
+      "votes": 6800,
+      "duration": 102,
+      "ageRating": 12,
+      "director": "Кристина Ларсен",
+      "cast": [
+        "Ева Нильсен",
+        "Роман Тихонов",
+        "Ларс Йохансен"
+      ],
+      "country": "Норвегия",
+      "colors": [
+        "#312e81",
+        "#22d3ee"
+      ],
+      "videoUrl": "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8"
+    },
+    {
+      "id": "krasnyj-gorizont",
+      "title": "Красный горизонт",
+      "originalTitle": "Red Horizon",
+      "description": "Колонизаторы Марса теряют связь с Землёй и обнаруживают, что их колония — лишь одна из многих, а остальные давно погибли при загадочных обстоятельствах.",
+      "year": 2024,
+      "genres": [
+        "Фантастика",
+        "Боевик"
+      ],
+      "rating": 6.8,
+      "votes": 11300,
+      "duration": 121,
+      "ageRating": 16,
+      "director": "Дэниел Кросс",
+      "cast": [
+        "Никита Ращупкин",
+        "Хлоя Барретт",
+        "Сергей Маланин"
+      ],
+      "country": "США",
+      "colors": [
+        "#450a0a",
+        "#dc2626"
+      ],
+      "videoUrl": "https://test-streams.mux.dev/tos_ismc/main.m3u8",
+      "trending": true
+    },
+    {
+      "id": "molchanie-lesov",
+      "title": "Молчание лесов",
+      "originalTitle": "Silence of the Woods",
+      "description": "Группа экологов приезжает изучать аномальную зону леса, где перестали петь птицы. Чем глубже они заходят, тем яснее понимают: отсюда не выходят без потерь.",
+      "year": 2025,
+      "genres": [
+        "Ужасы",
+        "Мистика"
+      ],
+      "rating": 7,
+      "votes": 4200,
+      "duration": 96,
+      "ageRating": 18,
+      "director": "Петер Хорват",
+      "cast": [
+        "Вера Стрельцова",
+        "Ян Новак",
+        "Кирилл Ефремов"
+      ],
+      "country": "Чехия",
+      "colors": [
+        "#052e16",
+        "#166534"
+      ],
+      "videoUrl": "https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8",
+      "isNew": true
+    },
+    {
+      "id": "pepel-i-zvezdy",
+      "title": "Пепел и звёзды",
+      "originalTitle": "Ashes and Stars",
+      "description": "История двух братьев, прошедших войну на разных сторонах фронта. Спустя двадцать лет они встречаются, чтобы выполнить обещание, данное матери.",
+      "year": 2021,
+      "genres": [
+        "Драма",
+        "Военный"
+      ],
+      "rating": 8.7,
+      "votes": 21800,
+      "duration": 149,
+      "ageRating": 16,
+      "director": "София Морено",
+      "cast": [
+        "Андрей Печёрский",
+        "Матео Диас",
+        "Ирина Волчек"
+      ],
+      "country": "Испания",
+      "colors": [
+        "#44403c",
+        "#d97706"
+      ],
+      "videoUrl": "https://demo.unified-streaming.com/k8s/features/stable/video/tears-of-steel/tears-of-steel.ism/.m3u8"
+    },
+    {
+      "id": "razlom",
+      "title": "Разлом",
+      "originalTitle": "The Fault",
+      "description": "Сейсмолог предсказывает разрушительное землетрясение, но ей никто не верит. Когда город начинает рушиться, именно её карта разломов становится шансом на спасение.",
+      "year": 2024,
+      "genres": [
+        "Боевик",
+        "Катастрофа"
+      ],
+      "rating": 6.5,
+      "votes": 7600,
+      "duration": 107,
+      "ageRating": 12,
+      "director": "Брэд Уинтерс",
+      "cast": [
+        "Дарья Осипова",
+        "Джош Миллер",
+        "Эмиль Карпенко"
+      ],
+      "country": "США",
+      "colors": [
+        "#78350f",
+        "#ea580c"
+      ],
+      "videoUrl": "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8"
+    },
+    {
+      "id": "nit-ariadny",
+      "title": "Нить Ариадны",
+      "originalTitle": "Ariadne's Thread",
+      "description": "Профайлер ФБР получает письмо от маньяка, которого ловила десять лет назад. Каждая строка письма — точное описание преступления, которое произойдёт завтра.",
+      "year": 2025,
+      "genres": [
+        "Детектив",
+        "Триллер"
+      ],
+      "rating": 8.2,
+      "votes": 5300,
+      "duration": 114,
+      "ageRating": 18,
+      "director": "Хелен Брукс",
+      "cast": [
+        "Марго Симонова",
+        "Уильям Грей",
+        "Тимофей Зотов"
+      ],
+      "country": "США",
+      "colors": [
+        "#3b0764",
+        "#7c3aed"
+      ],
+      "videoUrl": "https://test-streams.mux.dev/tos_ismc/main.m3u8",
+      "isNew": true,
+      "trending": true
+    },
+    {
+      "id": "stalnoj-les",
+      "title": "Стальной лес",
+      "originalTitle": "Steel Forest",
+      "description": "В мегаполисе будущего деревья заменены стальными конструкциями. Девочка находит последнее живое семя и отправляется через весь город, чтобы посадить его.",
+      "year": 2023,
+      "genres": [
+        "Анимация",
+        "Приключения"
+      ],
+      "rating": 7.8,
+      "votes": 10400,
+      "duration": 94,
+      "ageRating": 6,
+      "director": "Ли Вэй",
+      "cast": [
+        "Сяо Мэй",
+        "Борис Ким",
+        "Чэнь Лу"
+      ],
+      "country": "Китай",
+      "colors": [
+        "#134e4a",
+        "#2dd4bf"
+      ],
+      "videoUrl": "https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8"
+    },
+    {
+      "id": "oskolki-vremeni",
+      "title": "Осколки времени",
+      "originalTitle": "Shards of Time",
+      "description": "Физик случайно разбивает экспериментальный реактор, и время вокруг лаборатории начинает идти вспять. Каждый «осколок» показывает день из прошлого, который можно изменить — ценой будущего.",
+      "year": 2024,
+      "genres": [
+        "Фантастика",
+        "Триллер"
+      ],
+      "rating": 7.5,
+      "votes": 8100,
+      "duration": 116,
+      "ageRating": 16,
+      "director": "Анна Верещагина",
+      "cast": [
+        "Лев Гордеев",
+        "Юлия Раевская",
+        "Оскар Линдгрен"
+      ],
+      "country": "Швеция",
+      "colors": [
+        "#164e63",
+        "#67e8f9"
+      ],
+      "videoUrl": "https://demo.unified-streaming.com/k8s/features/stable/video/tears-of-steel/tears-of-steel.ism/.m3u8"
+    },
+    {
+      "id": "zerkalo-sudby",
+      "title": "Зеркало судьбы",
+      "originalTitle": "Mirror of Fate",
+      "description": "Старинное зеркало исполняет желания, забирая взамен воспоминания. Юная художница готова отдать все, кроме одного воспоминания — о человеке, которого больше нет.",
+      "year": 2023,
+      "genres": [
+        "Фэнтези",
+        "Приключения"
+      ],
+      "rating": 6.9,
+      "votes": 5900,
+      "duration": 111,
+      "ageRating": 12,
+      "director": "Марко Росси",
+      "cast": [
+        "Алиса Дементьева",
+        "Лука Ферри",
+        "Полина Ясная"
+      ],
+      "country": "Италия",
+      "colors": [
+        "#4c1d95",
+        "#c084fc"
+      ],
+      "videoUrl": "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8"
+    },
+    {
+      "id": "sezon-shtormov",
+      "title": "Сезон штормов",
+      "originalTitle": "Storm Season",
+      "description": "Три неудачника арендуют рыбацкую лодку, чтобы провернуть «сделку века», но шторм выбрасывает их на остров, где живут отшельники, знающие о них всё.",
+      "year": 2025,
+      "genres": [
+        "Комедия",
+        "Приключения"
+      ],
+      "rating": 7.3,
+      "votes": 3100,
+      "duration": 99,
+      "ageRating": 12,
+      "director": "Жан Дюбуа",
+      "cast": [
+        "Гоша Куценко-младший",
+        "Камиль Руа",
+        "Стас Беневоленский"
+      ],
+      "country": "Франция",
+      "colors": [
+        "#0c4a6e",
+        "#38bdf8"
+      ],
+      "videoUrl": "https://test-streams.mux.dev/tos_ismc/main.m3u8",
+      "isNew": true
+    }
+  ]
+}

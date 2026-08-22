@@ -1,0 +1,60 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String         @id @default(cuid())
+  email         String         @unique
+  name          String
+  passwordHash  String
+  role          String         @default("user")
+  bio           String?
+  avatarColor   String         @default("#e50914")
+  avatarUrl     String?
+  createdAt     DateTime       @default(now())
+  comments      Comment[]
+  notifications Notification[]
+  watchStats    WatchStat[]
+}
+
+model Comment {
+  id        String   @id @default(cuid())
+  movieId   String
+  userId    String
+  text      String
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([movieId])
+}
+
+model Notification {
+  id        String   @id @default(cuid())
+  userId    String
+  type      String
+  message   String
+  movieId   String?
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, read])
+}
+
+model WatchStat {
+  id        String   @id @default(cuid())
+  userId    String
+  movieId   String
+  day       String
+  seconds   Float    @default(0)
+  updatedAt DateTime @updatedAt
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, movieId, day])
+  @@index([movieId])
+}

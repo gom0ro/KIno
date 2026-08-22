@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --base-950: 10 11 15;
+  --base-900: 16 18 24;
+  --base-800: 23 26 35;
+  --base-700: 31 36 48;
+  --fg: 255 255 255;
+  --z-100: 244 244 245;
+  --z-200: 228 228 231;
+  --z-300: 212 212 216;
+  --z-400: 161 161 170;
+  --z-500: 113 113 122;
+  --z-600: 82 82 91;
+}
+
+html.light {
+  --base-950: 246 247 250;
+  --base-900: 240 241 245;
+  --base-800: 230 232 237;
+  --base-700: 214 217 224;
+  --fg: 24 26 32;
+  --z-100: 24 26 32;
+  --z-200: 45 48 56;
+  --z-300: 70 74 84;
+  --z-400: 100 105 116;
+  --z-500: 124 129 140;
+  --z-600: 152 157 167;
+}
+
+html {
+  color-scheme: dark;
+  scroll-behavior: smooth;
+}
+
+html.light {
+  color-scheme: light;
+}
+
+body {
+  @apply bg-base-950 text-zinc-100 antialiased;
+}
+
+::selection {
+  @apply bg-accent/70 text-white;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(var(--base-950));
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--base-700));
+  border-radius: 8px;
+  border: 2px solid rgb(var(--base-950));
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--z-600));
+}
+
+.skeleton {
+  @apply relative overflow-hidden rounded-xl bg-base-800;
+}
+
+.skeleton::after {
+  content: "";
+  @apply absolute inset-0 -translate-x-full animate-[shimmer_1.6s_infinite] bg-gradient-to-r from-transparent via-fg/[0.07] to-transparent;
+}
