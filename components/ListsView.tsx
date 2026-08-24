@@ -3,7 +3,6 @@
 import { useEffect, useState, type ComponentType } from "react";
 import { MOVIES } from "@/lib/movies";
 import MovieGrid from "@/components/MovieGrid";
-import DataManager from "@/components/DataManager";
 import {
   PlayIcon,
   ClockIcon,
@@ -97,8 +96,6 @@ export default function ListsView() {
           </p>
         </div>
       )}
-
-      <DataManager />
     </div>
   );
 }

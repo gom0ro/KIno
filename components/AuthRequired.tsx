@@ -11,7 +11,7 @@ export default function AuthRequired() {
         У вас ещё нет аккаунта
       </h1>
       <p className="mt-2 max-w-sm text-sm leading-relaxed text-zinc-500">
-        Создайте бесплатный аккаунт, чтобы сохранять избранное, вести списки,
+        Создайте бесплатный аккаунт, чтобы вести списки,
         комментировать и попадать в топ зрителей
       </p>
       <div className="mt-6 flex flex-wrap justify-center gap-3">

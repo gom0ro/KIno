@@ -1,9 +1,31 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { getRating, RATINGS_EVENT, setRating } from "@/lib/ratings";
+import { useMe } from "@/hooks/useMe";
+
+function AuthPrompt({ text }: { text: string }) {
+  return (
+    <p className="rounded-lg border border-dashed border-fg/10 px-4 py-3 text-sm text-zinc-500">
+      {text}{" "}
+      <Link href="/login" className="font-medium text-accent hover:underline">
+        Войдите
+      </Link>{" "}
+      или{" "}
+      <Link
+        href="/register"
+        className="font-medium text-accent hover:underline"
+      >
+        зарегистрируйтесь
+      </Link>
+      .
+    </p>
+  );
+}
 
 export default function RatingStars({ movieId }: { movieId: string }) {
+  const { me, ready } = useMe();
   const [value, setValue] = useState<number | null>(null);
   const [hover, setHover] = useState<number | null>(null);
 
@@ -15,6 +37,9 @@ export default function RatingStars({ movieId }: { movieId: string }) {
   }, [movieId]);
 
   const shown = hover ?? value ?? 0;
+
+  if (!ready) return null;
+  if (!me) return <AuthPrompt text="Хотите оценить фильм?" />;
 
   function pick(v: number) {
     setRating(movieId, value === v ? null : v);

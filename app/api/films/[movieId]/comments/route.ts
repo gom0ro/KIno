@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
-import { getSessionUser } from "@/lib/auth";
+import { getSessionUser, getSessionUserId } from "@/lib/auth";
 import { MOVIES } from "@/lib/movies";
 
 const MAX_TEXT = 1000;
@@ -10,12 +10,17 @@ export async function GET(
   ctx: { params: { movieId: string } }
 ): Promise<Response> {
   const { movieId } = ctx.params;
+  const uid = getSessionUserId();
   const rows = await prisma.comment.findMany({
     where: { movieId },
     orderBy: { createdAt: "desc" },
     take: 100,
     include: {
       user: { select: { id: true, name: true, avatarColor: true } },
+      _count: { select: { likes: true } },
+      likes: uid
+        ? { where: { userId: uid }, select: { userId: true } }
+        : false,
     },
   });
   return NextResponse.json({
@@ -23,9 +28,12 @@ export async function GET(
       id: c.id,
       text: c.text,
       createdAt: c.createdAt.toISOString(),
+      updatedAt: c.updatedAt.toISOString(),
       userId: c.userId,
       userName: c.user.name,
       avatarColor: c.user.avatarColor,
+      likes: c._count.likes,
+      likedByMe: Array.isArray(c.likes) && c.likes.length > 0,
     })),
   });
 }
@@ -85,9 +93,12 @@ export async function POST(
         id: comment.id,
         text: comment.text,
         createdAt: comment.createdAt.toISOString(),
+        updatedAt: comment.updatedAt.toISOString(),
         userId: comment.userId,
         userName: comment.user.name,
         avatarColor: comment.user.avatarColor,
+        likes: 0,
+        likedByMe: false,
       },
     },
     { status: 201 }

@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import {
+  checkCredentials,
+  clearSessionCookie,
   getSessionUser,
   updateUserProfile,
   AVATAR_COLORS,
@@ -80,4 +82,33 @@ export async function PATCH(req: Request): Promise<Response> {
 
   const user = await updateUserProfile(me.id, data);
   return NextResponse.json({ user });
+}
+
+export async function DELETE(req: Request): Promise<Response> {
+  const me = await getSessionUser();
+  if (!me) {
+    return NextResponse.json({ error: "Требуется вход" }, { status: 401 });
+  }
+
+  let body: { password?: unknown };
+  try {
+    body = (await req.json()) as typeof body;
+  } catch {
+    return NextResponse.json({ error: "Некорректный запрос" }, { status: 400 });
+  }
+
+  if (typeof body.password !== "string" || !body.password) {
+    return NextResponse.json(
+      { error: "Подтвердите паролем" },
+      { status: 400 }
+    );
+  }
+  const ok = await checkCredentials(me.email, body.password);
+  if (!ok) {
+    return NextResponse.json({ error: "Пароль неверен" }, { status: 403 });
+  }
+
+  await prisma.user.delete({ where: { id: me.id } });
+  clearSessionCookie();
+  return NextResponse.json({ ok: true });
 }

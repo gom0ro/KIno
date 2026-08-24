@@ -20,17 +20,33 @@ model User {
   comments      Comment[]
   notifications Notification[]
   watchStats    WatchStat[]
+  favorites     UserFavorite[]
+  ratings       UserRating[]
+  commentLikes  CommentLike[]
 }
 
 model Comment {
-  id        String   @id @default(cuid())
+  id        String        @id @default(cuid())
   movieId   String
   userId    String
   text      String
-  createdAt DateTime @default(now())
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+  user      User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  likes     CommentLike[]
 
   @@index([movieId])
+}
+
+model CommentLike {
+  userId    String
+  commentId String
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  comment   Comment  @relation(fields: [commentId], references: [id], onDelete: Cascade)
+
+  @@id([userId, commentId])
+  @@index([commentId])
 }
 
 model Notification {
@@ -56,5 +72,26 @@ model WatchStat {
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([userId, movieId, day])
+  @@index([movieId])
+}
+
+model UserFavorite {
+  userId    String
+  movieId   String
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([userId, movieId])
+  @@index([movieId])
+}
+
+model UserRating {
+  userId    String
+  movieId   String
+  value     Int
+  updatedAt DateTime @updatedAt
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([userId, movieId])
   @@index([movieId])
 }

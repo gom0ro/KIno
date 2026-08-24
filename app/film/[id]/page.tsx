@@ -8,12 +8,12 @@ import {
   getSimilar,
 } from "@/lib/movies";
 import HlsPlayer from "@/components/HlsPlayer";
-import FavoriteButton from "@/components/FavoriteButton";
 import MovieGrid from "@/components/MovieGrid";
 import Comments from "@/components/Comments";
 import RatingBadge from "@/components/RatingBadge";
 import RatingStars from "@/components/RatingStars";
 import MovieListSelector from "@/components/MovieListSelector";
+import ShareButton from "@/components/ShareButton";
 
 interface Props {
   params: { id: string };
@@ -130,7 +130,14 @@ export default function FilmPage({ params }: Props) {
         <dl className="grid gap-x-8 gap-y-3 text-sm sm:grid-cols-2">
           <div>
             <dt className="text-zinc-500">Режиссёр</dt>
-            <dd className="mt-0.5 text-zinc-200">{movie.director}</dd>
+            <dd className="mt-0.5">
+              <Link
+                href={`/catalog?q=${encodeURIComponent(movie.director)}`}
+                className="text-zinc-200 transition-colors hover:text-accent hover:underline"
+              >
+                {movie.director}
+              </Link>
+            </dd>
           </div>
           <div>
             <dt className="text-zinc-500">Страна</dt>
@@ -138,7 +145,19 @@ export default function FilmPage({ params }: Props) {
           </div>
           <div className="sm:col-span-2">
             <dt className="text-zinc-500">В главных ролях</dt>
-            <dd className="mt-0.5 text-zinc-200">{movie.cast.join(", ")}</dd>
+            <dd className="mt-0.5">
+              {movie.cast.map((name, i) => (
+                <span key={name}>
+                  {i > 0 && ", "}
+                  <Link
+                    href={`/catalog?q=${encodeURIComponent(name)}`}
+                    className="text-zinc-200 transition-colors hover:text-accent hover:underline"
+                  >
+                    {name}
+                  </Link>
+                </span>
+              ))}
+            </dd>
           </div>
         </dl>
       </section>
@@ -148,7 +167,7 @@ export default function FilmPage({ params }: Props) {
       <section className="flex flex-wrap items-center gap-x-8 gap-y-4">
         <RatingStars movieId={movie.id} />
         <MovieListSelector movieId={movie.id} />
-        <FavoriteButton id={movie.id} size="md" />
+        <ShareButton title={`${movie.title} (${movie.year})`} />
       </section>
 
       <Comments movieId={movie.id} />

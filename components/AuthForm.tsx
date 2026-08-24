@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState, type FormEvent } from "react";
 import { AUTH_CHANGED_EVENT } from "@/lib/events";
+import PasswordInput from "@/components/PasswordInput";
 
 export { AUTH_CHANGED_EVENT };
 
@@ -85,8 +86,7 @@ export default function AuthForm({ mode }: Props) {
             required
             className={inputClass}
           />
-          <input
-            type="password"
+          <PasswordInput
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Пароль"

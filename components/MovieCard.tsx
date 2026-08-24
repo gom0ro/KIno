@@ -1,7 +1,6 @@
 import Link from "next/link";
 import type { Movie } from "@/lib/types";
 import { formatDuration } from "@/lib/movies";
-import FavoriteButton from "./FavoriteButton";
 import RatingBadge from "./RatingBadge";
 
 export default function MovieCard({ movie }: { movie: Movie }) {
@@ -48,9 +47,6 @@ export default function MovieCard({ movie }: { movie: Movie }) {
           </p>
         </div>
       </Link>
-      <div className="absolute right-2 top-14 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-        <FavoriteButton id={movie.id} size="sm" />
-      </div>
     </div>
   );
 }

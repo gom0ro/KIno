@@ -89,6 +89,29 @@ export function searchMovies(filters: CatalogFilters): CatalogResult {
   };
 }
 
+export function quickSearch(rawQuery: string, limit = 6): Movie[] {
+  const q = rawQuery.trim().toLowerCase();
+  if (!q) return [];
+
+  return MOVIES.map((m) => {
+    const title = m.title.toLowerCase();
+    let score = -1;
+    if (title.startsWith(q)) score = 3;
+    else if (title.includes(q)) score = 2;
+    else if (m.originalTitle.toLowerCase().includes(q)) score = 1;
+    else if (
+      m.director.toLowerCase().includes(q) ||
+      m.cast.some((a) => a.toLowerCase().includes(q))
+    )
+      score = 0;
+    return { movie: m, score };
+  })
+    .filter(({ score }) => score >= 0)
+    .sort((a, b) => b.score - a.score || b.movie.rating - a.movie.rating)
+    .slice(0, limit)
+    .map(({ movie }) => movie);
+}
+
 export function getSimilar(movie: Movie, limit = 6): Movie[] {
   return MOVIES.filter((m) => m.id !== movie.id)
     .map((m) => ({

@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import { getWatchSummary } from "@/lib/top";
 import { MOVIES } from "@/lib/movies";
+import MovieGrid from "@/components/MovieGrid";
 
 export const dynamic = "force-dynamic";
 
@@ -39,14 +40,31 @@ export default async function PublicProfilePage({
   const user = await getUser(params.id);
   if (!user) notFound();
 
-  const [watch, comments] = await Promise.all([
+  const [watch, comments, favorites, ratings] = await Promise.all([
     getWatchSummary(user.id),
     prisma.comment.findMany({
       where: { userId: user.id },
       orderBy: { createdAt: "desc" },
       take: 10,
     }),
+    prisma.userFavorite.findMany({
+      where: { userId: user.id },
+      orderBy: { createdAt: "desc" },
+    }),
+    prisma.userRating.findMany({
+      where: { userId: user.id },
+      orderBy: { updatedAt: "desc" },
+    }),
   ]);
+
+  const favoriteMovies = favorites
+    .map((f) => MOVIES.find((m) => m.id === f.movieId))
+    .filter((m) => m !== undefined);
+  const ratedMovies = ratings
+    .map((r) => ({ movie: MOVIES.find((m) => m.id === r.movieId), value: r.value }))
+    .filter((r): r is { movie: (typeof MOVIES)[number]; value: number } =>
+      Boolean(r.movie)
+    );
 
   return (
     <div className="animate-fade-in space-y-8">
@@ -76,6 +94,11 @@ export default async function PublicProfilePage({
               year: "numeric",
             })}
           </p>
+          {user.bio && (
+            <p className="mt-2 max-w-xl text-sm leading-relaxed text-zinc-400">
+              {user.bio}
+            </p>
+          )}
           {user.role === "admin" && (
             <span className="mt-2 inline-block rounded-full bg-accent/15 px-3 py-0.5 text-xs font-bold uppercase tracking-wider text-accent">
               Администратор
@@ -110,6 +133,60 @@ export default async function PublicProfilePage({
               <p className="mt-0.5 text-xs text-zinc-500">Место в топе</p>
             </div>
           </div>
+        </section>
+      )}
+
+      {favoriteMovies.length > 0 && (
+        <section>
+          <h2 className="mb-3 flex items-center gap-2 text-xl font-bold text-fg">
+            <span className="h-6 w-1.5 rounded-full bg-accent" />
+            Избранное
+            <span className="text-sm font-normal text-zinc-500">
+              ({favoriteMovies.length})
+            </span>
+          </h2>
+          <MovieGrid movies={favoriteMovies} />
+        </section>
+      )}
+
+      {ratedMovies.length > 0 && (
+        <section>
+          <h2 className="mb-3 flex items-center gap-2 text-xl font-bold text-fg">
+            <span className="h-6 w-1.5 rounded-full bg-accent" />
+            Оценки
+            <span className="text-sm font-normal text-zinc-500">
+              ({ratedMovies.length})
+            </span>
+          </h2>
+          <ul className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+            {ratedMovies.slice(0, 12).map(({ movie, value }) => (
+              <li key={movie.id}>
+                <Link
+                  href={`/film/${movie.id}`}
+                  className="flex items-center gap-3 rounded-xl border border-fg/5 bg-base-800/60 p-3 transition-colors hover:border-accent/40"
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={`/posters/${movie.id}.svg`}
+                    alt=""
+                    loading="lazy"
+                    className="h-14 w-10 shrink-0 rounded-md object-cover ring-1 ring-fg/10"
+                  />
+                  <span className="min-w-0 flex-1">
+                    <span className="block truncate text-sm font-medium text-fg">
+                      {movie.title}
+                    </span>
+                    <span className="block text-xs text-zinc-500">
+                      {movie.year}
+                    </span>
+                  </span>
+                  <span className="shrink-0 text-lg font-black text-accent">
+                    {value}
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
         </section>
       )}
 

@@ -3,8 +3,8 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import BottomNav from "@/components/BottomNav";
-import SearchHotkey from "@/components/SearchHotkey";
 import ServiceWorkerRegister from "@/components/ServiceWorkerRegister";
+import ProfileSync from "@/components/ProfileSync";
 
 export const viewport: Viewport = {
   themeColor: "#0a0b0f",
@@ -52,8 +52,8 @@ export default function RootLayout({
         </main>
         <Footer />
         <BottomNav />
-        <SearchHotkey />
         <ServiceWorkerRegister />
+        <ProfileSync />
       </body>
     </html>
   );

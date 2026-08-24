@@ -5,19 +5,38 @@ import {
   getNewReleases,
   getTrending,
 } from "@/lib/movies";
-import MovieGrid from "@/components/MovieGrid";
-import RatingBadge from "@/components/RatingBadge";
-import FavoriteButton from "@/components/FavoriteButton";
+import type { Movie } from "@/lib/types";
+import { StarIcon } from "@/components/icons";
 import ContinueWatching from "@/components/ContinueWatching";
-import { FlameIcon } from "@/components/icons";
 import { COLLECTIONS } from "@/lib/collections";
 
-function SectionTitle({ children }: { children: React.ReactNode }) {
+function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
-    <h2 className="mb-4 flex items-center gap-2 text-xl font-bold text-fg sm:text-2xl">
-      <span className="h-6 w-1.5 rounded-full bg-accent" />
+    <h2 className="mb-6 text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">
       {children}
     </h2>
+  );
+}
+
+function MovieItem({ movie }: { movie: Movie }) {
+  return (
+    <Link href={`/film/${movie.id}`} className="group block animate-fade-in">
+      <div className="aspect-[2/3] overflow-hidden rounded-lg ring-1 ring-fg/10">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={`/posters/${movie.id}.svg`}
+          alt={movie.title}
+          loading="lazy"
+          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+        />
+      </div>
+      <h3 className="mt-3 truncate text-sm font-medium text-fg transition-colors group-hover:text-accent">
+        {movie.title}
+      </h3>
+      <p className="mt-0.5 truncate text-xs text-zinc-500">
+        {movie.year} · {movie.genres[0]}
+      </p>
+    </Link>
   );
 }
 
@@ -25,125 +44,125 @@ export default function HomePage() {
   const featured = getFeatured();
   const trending = getTrending();
   const newReleases = getNewReleases();
-  const [c1, c2] = featured.colors;
 
   return (
-    <div className="space-y-12">
-      <section className="relative overflow-hidden rounded-2xl border border-fg/5">
-        <div
-          className="absolute inset-0"
-          style={{ background: `linear-gradient(120deg, ${c1} 0%, ${c2} 100%)` }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-base-950/95 via-base-950/70 to-transparent" />
+    <div className="space-y-16">
+      <section className="grid items-center gap-10 pt-4 lg:grid-cols-[1fr_240px]">
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">
+            В тренде
+          </p>
+          <h1 className="mt-3 text-4xl font-semibold leading-tight tracking-tight text-fg sm:text-6xl">
+            {featured.title}
+          </h1>
+          <p className="mt-2 text-sm text-zinc-500">{featured.originalTitle}</p>
 
-        <div className="relative grid items-center gap-6 p-6 sm:p-10 lg:grid-cols-[1fr_260px]">
-          <div className="max-w-2xl">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-accent px-3 py-1 text-xs font-bold uppercase tracking-wider">
-              <FlameIcon className="h-3.5 w-3.5" />
-              В тренде
+          <div className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-zinc-500">
+            <span className="inline-flex items-center gap-1 font-medium text-fg">
+              <StarIcon className="h-3.5 w-3.5" />
+              {featured.rating.toFixed(1)}
             </span>
-            <h1 className="mt-4 text-3xl font-black leading-tight text-white sm:text-5xl">
-              {featured.title}
-            </h1>
-            <p className="mt-1 text-sm text-zinc-400">{featured.originalTitle}</p>
-
-            <div className="mt-4 flex flex-wrap items-center gap-3 text-sm text-zinc-300">
-              <RatingBadge rating={featured.rating} />
-              <span>{featured.year}</span>
-              <span>{formatDuration(featured.duration)}</span>
-              <span className="rounded border border-white/20 px-1.5 py-0.5 text-xs">
-                {featured.ageRating}+
-              </span>
-              <span>{featured.genres.join(", ")}</span>
-            </div>
-
-            <p className="mt-4 line-clamp-3 leading-relaxed text-zinc-300">
-              {featured.description}
-            </p>
-
-            <div className="mt-6 flex flex-wrap items-center gap-3">
-              <Link
-                href={`/film/${featured.id}`}
-                className="flex items-center gap-2 rounded-lg bg-accent px-6 py-3 font-semibold text-white transition-all hover:bg-accent-hover hover:shadow-[0_0_30px_rgba(229,9,20,0.5)]"
-              >
-                <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current">
-                  <path d="M8 5v14l11-7z" />
-                </svg>
-                Смотреть
-              </Link>
-              <Link
-                href="/catalog"
-                className="rounded-lg border border-white/15 bg-white/5 px-6 py-3 font-semibold text-white backdrop-blur transition-colors hover:bg-white/10"
-              >
-                Весь каталог
-              </Link>
-              <FavoriteButton id={featured.id} />
-            </div>
+            <span>{featured.year}</span>
+            <span>{formatDuration(featured.duration)}</span>
+            <span>{featured.ageRating}+</span>
+            <span>{featured.genres.join(", ")}</span>
           </div>
 
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={`/posters/${featured.id}.svg`}
-            alt={featured.title}
-            className="hidden w-full rounded-xl shadow-2xl ring-1 ring-white/10 lg:block"
-          />
-        </div>
-      </section>
+          <p className="mt-4 line-clamp-3 max-w-xl leading-relaxed text-zinc-400">
+            {featured.description}
+          </p>
 
-      <ContinueWatching />
-
-      <section>
-        <SectionTitle>Подборки</SectionTitle>
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {COLLECTIONS.slice(0, 3).map((c) => (
+          <div className="mt-8 flex flex-wrap items-center gap-3">
             <Link
-              key={c.id}
-              href={`/collections/${c.id}`}
-              className="group relative overflow-hidden rounded-xl p-4 transition-transform hover:-translate-y-0.5"
-              style={{
-                background: `linear-gradient(135deg, ${c.gradient[0]}, ${c.gradient[1]})`,
-              }}
+              href={`/film/${featured.id}`}
+              className="rounded-lg bg-fg px-6 py-2.5 font-medium text-base-950 transition-opacity hover:opacity-85"
             >
-              <span className="relative block text-base font-bold text-white">
-                {c.title}
-                <span className="ml-2 rounded-full bg-black/25 px-2 py-0.5 text-[11px] font-semibold">
-                  {c.movies.length}
-                </span>
-              </span>
-              <span className="mt-1 block truncate text-xs text-white/80">
-                {c.description}
-              </span>
+              Смотреть
             </Link>
-          ))}
+            <Link
+              href="/catalog"
+              className="rounded-lg border border-fg/15 px-6 py-2.5 font-medium text-fg transition-colors hover:border-fg/40"
+            >
+              Весь каталог
+            </Link>
+          </div>
         </div>
-        <p className="mt-3 text-sm text-zinc-500">
-          Все подборки —{" "}
-          <Link href="/collections" className="text-accent hover:underline">
-            здесь
-          </Link>
-          .
-        </p>
+
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={`/posters/${featured.id}.svg`}
+          alt={featured.title}
+          className="hidden w-full rounded-xl ring-1 ring-fg/10 lg:block"
+        />
       </section>
+
+      <ContinueWatching minimal />
 
       {trending.length > 0 && (
         <section>
-          <SectionTitle>В тренде</SectionTitle>
-          <MovieGrid movies={trending} />
+          <SectionLabel>В тренде</SectionLabel>
+          <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
+            {trending.map((m) => (
+              <MovieItem key={m.id} movie={m} />
+            ))}
+          </div>
         </section>
       )}
 
       {newReleases.length > 0 && (
         <section>
-          <SectionTitle>Новинки</SectionTitle>
-          <MovieGrid movies={newReleases} />
+          <SectionLabel>Новинки</SectionLabel>
+          <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
+            {newReleases.map((m) => (
+              <MovieItem key={m.id} movie={m} />
+            ))}
+          </div>
         </section>
       )}
 
       <section>
-        <SectionTitle>Все фильмы</SectionTitle>
-        <p className="-mt-3 mb-4 text-sm text-zinc-500">
+        <SectionLabel>Подборки</SectionLabel>
+        <div>
+          {COLLECTIONS.slice(0, 3).map((c) => (
+            <Link
+              key={c.id}
+              href={`/collections/${c.id}`}
+              className="group -mx-2 flex items-center justify-between gap-4 border-b border-fg/10 px-2 py-4 transition-colors first:border-t hover:bg-fg/[0.04]"
+            >
+              <span className="flex items-baseline gap-2 whitespace-nowrap text-base font-medium text-fg">
+                {c.title}
+                <span className="text-sm font-normal text-zinc-500">
+                  {c.movies.length}
+                </span>
+              </span>
+              <span className="hidden flex-1 truncate text-sm text-zinc-500 md:block">
+                {c.description}
+              </span>
+              <span
+                aria-hidden
+                className="text-zinc-500 transition-transform duration-200 group-hover:translate-x-1 group-hover:text-fg"
+              >
+                →
+              </span>
+            </Link>
+          ))}
+        </div>
+        <Link
+          href="/collections"
+          className="mt-4 inline-block text-sm font-medium text-fg underline decoration-fg/30 underline-offset-4 transition-colors hover:decoration-fg"
+        >
+          Все подборки
+        </Link>
+      </section>
+
+      <section className="border-t border-fg/10 pb-4 pt-10">
+        <SectionLabel>Все фильмы</SectionLabel>
+        <p className="text-sm text-zinc-500">
           Ищите по названию, фильтруйте по жанру и году в{" "}
-          <Link href="/catalog" className="text-accent hover:underline">
+          <Link
+            href="/catalog"
+            className="font-medium text-fg underline decoration-fg/30 underline-offset-4 transition-colors hover:decoration-fg"
+          >
             каталоге
           </Link>
           .

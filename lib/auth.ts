@@ -151,6 +151,27 @@ export async function updateUserProfile(
   return publicView(user);
 }
 
+export async function changeUserEmail(
+  id: string,
+  newEmail: string
+): Promise<PublicUser> {
+  const user = await prisma.user.update({
+    where: { id },
+    data: { email: newEmail },
+  });
+  return publicView(user);
+}
+
+export async function changeUserPassword(
+  id: string,
+  newPassword: string
+): Promise<void> {
+  await prisma.user.update({
+    where: { id },
+    data: { passwordHash: await hashPassword(newPassword) },
+  });
+}
+
 export async function checkCredentials(
   email: string,
   password: string

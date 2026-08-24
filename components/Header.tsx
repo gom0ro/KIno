@@ -5,8 +5,10 @@ import { usePathname, useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 import { AUTH_CHANGED_EVENT } from "@/lib/events";
 import { NOTIF_CHANGED_EVENT } from "@/lib/events";
-import { BellIcon, DiceIcon, PlayIcon } from "@/components/icons";
+import { maskEmail } from "@/lib/mask";
+import { BellIcon, DiceIcon, PlayIcon, SearchIcon } from "@/components/icons";
 import ThemeToggle from "@/components/ThemeToggle";
+import HeaderSearch from "@/components/HeaderSearch";
 import type { PublicUser } from "@/lib/auth";
 
 const LINKS = [
@@ -85,7 +87,9 @@ export default function Header() {
           КИНО
         </Link>
 
-        <nav className="flex items-center gap-1 sm:gap-2">
+        <HeaderSearch />
+
+        <nav className="flex shrink-0 items-center gap-1 sm:gap-2">
           <div className="hidden items-center gap-1 md:flex">
             {(user?.role === "admin"
               ? [...LINKS, { href: "/admin", label: "Админка" }]
@@ -111,6 +115,15 @@ export default function Header() {
           </div>
 
           <ThemeToggle />
+
+          <Link
+            href="/catalog?focus=1"
+            aria-label="Поиск фильмов"
+            title="Поиск фильмов"
+            className="rounded-lg p-2 text-zinc-400 transition-colors hover:bg-fg/10 hover:text-fg md:hidden"
+          >
+            <SearchIcon className="h-5 w-5" />
+          </Link>
 
           <Link
             href="/random"
@@ -143,7 +156,7 @@ export default function Header() {
             <div className="flex items-center gap-2">
               <Link
                 href="/profile"
-                title={`${user.email} — открыть профиль`}
+                title={`${maskEmail(user.email)} — открыть профиль`}
                 className="flex items-center gap-1.5 text-sm font-medium text-zinc-200 transition-colors hover:text-fg"
               >
                 {user.avatarUrl ? (
@@ -170,17 +183,9 @@ export default function Header() {
                 onClick={logout}
                 aria-label="Выйти из аккаунта"
                 title="Выйти"
-                className="rounded-lg border border-fg/10 px-2.5 py-1.5 text-sm text-zinc-400 transition-colors hover:border-accent hover:text-fg"
+                className="hidden rounded-lg border border-fg/10 px-2.5 py-1.5 text-sm text-zinc-400 transition-colors hover:border-accent hover:text-fg sm:block"
               >
-                <span className="hidden sm:inline">Выйти</span>
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  aria-hidden
-                  className="h-4 w-4 sm:hidden"
-                >
-                  <path d="M10.09 15.59L11.5 17l5-5-5-5-1.41 1.41L12.67 11H3v2h9.67l-2.58 2.59zM19 3H5a2 2 0 0 0-2 2v4h2V5h14v14H5v-4H3v4a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2z" />
-                </svg>
+                Выйти
               </button>
             </div>
           ) : (
@@ -193,13 +198,23 @@ export default function Header() {
               </Link>
               <Link
                 href="/register"
-                className={`rounded-lg px-3 py-1.5 text-sm font-semibold transition-colors ${
+                className={`hidden rounded-lg px-3 py-1.5 text-sm font-semibold transition-colors sm:block ${
                   pathname === "/register"
                     ? "bg-accent-hover text-white"
                     : "bg-accent text-white hover:bg-accent-hover"
                 }`}
               >
                 Регистрация
+              </Link>
+              <Link
+                href="/login"
+                className={`rounded-lg px-3 py-1.5 text-sm font-semibold transition-colors sm:hidden ${
+                  pathname === "/login"
+                    ? "bg-accent-hover text-white"
+                    : "bg-accent text-white hover:bg-accent-hover"
+                }`}
+              >
+                Войти
               </Link>
             </div>
           )}

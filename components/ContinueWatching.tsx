@@ -9,7 +9,7 @@ import {
   type HistoryEntry,
 } from "@/lib/watch-history";
 
-export default function ContinueWatching() {
+export default function ContinueWatching({ minimal = false }: { minimal?: boolean }) {
   const [entries, setEntries] = useState<HistoryEntry[]>([]);
 
   useEffect(() => {
@@ -33,6 +33,46 @@ export default function ContinueWatching() {
     .slice(0, 6);
 
   if (items.length === 0) return null;
+
+  if (minimal) {
+    return (
+      <section className="animate-fade-in">
+        <h2 className="mb-6 text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">
+          Продолжить просмотр
+        </h2>
+        <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
+          {items.map(({ entry, movie }) => {
+            const pct =
+              entry.duration > 0
+                ? Math.min(100, (entry.position / entry.duration) * 100)
+                : 0;
+            return (
+              <Link key={entry.id} href={`/film/${movie.id}`} className="group block">
+                <div className="relative aspect-[2/3] overflow-hidden rounded-lg ring-1 ring-fg/10">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={`/posters/${movie.id}.svg`}
+                    alt={movie.title}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                  />
+                </div>
+                <div className="mt-2 h-0.5 w-full overflow-hidden rounded-full bg-fg/10">
+                  <div
+                    className="h-full rounded-full bg-accent"
+                    style={{ width: `${pct}%` }}
+                  />
+                </div>
+                <p className="mt-2 truncate text-sm font-medium text-fg transition-colors group-hover:text-accent">
+                  {movie.title}
+                </p>
+              </Link>
+            );
+          })}
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="animate-fade-in">
