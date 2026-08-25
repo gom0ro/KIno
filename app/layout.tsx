@@ -7,7 +7,10 @@ import ServiceWorkerRegister from "@/components/ServiceWorkerRegister";
 import ProfileSync from "@/components/ProfileSync";
 
 export const viewport: Viewport = {
-  themeColor: "#0a0b0f",
+  themeColor: [
+    { media: "(prefers-color-scheme: dark)", color: "#0a0b0f" },
+    { media: "(prefers-color-scheme: light)", color: "#f6f7fa" },
+  ],
   viewportFit: "cover",
 };
 
@@ -16,8 +19,8 @@ export const metadata: Metadata = {
     process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"
   ),
   title: {
-    default: "КИНО — смотреть фильмы онлайн",
-    template: "%s — КИНО",
+    default: "ФИЛЬМИК — смотреть фильмы онлайн",
+    template: "%s — ФИЛЬМИК",
   },
   description:
     "Онлайн-кинотеатр: популярные фильмы, новинки и рекомендации. Смотрите в HD с адаптивным плеером.",
@@ -25,8 +28,8 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "ru_RU",
-    siteName: "КИНО",
-    title: "КИНО — смотреть фильмы онлайн",
+    siteName: "ФИЛЬМИК",
+    title: "ФИЛЬМИК — смотреть фильмы онлайн",
     description:
       "Онлайн-кинотеатр: популярные фильмы, новинки и рекомендации.",
   },
@@ -47,7 +50,7 @@ export default function RootLayout({
       </head>
       <body className="flex min-h-screen flex-col">
         <Header />
-        <main className="mx-auto w-full max-w-7xl flex-1 px-4 pb-28 pt-8 sm:px-6 md:pb-8">
+        <main className="mx-auto w-full max-w-7xl flex-1 px-4 pb-32 pt-8 sm:px-6 sm:pb-36 md:pb-8">
           {children}
         </main>
         <Footer />

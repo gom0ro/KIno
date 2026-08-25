@@ -73,3 +73,15 @@ body {
   content: "";
   @apply absolute inset-0 -translate-x-full animate-[shimmer_1.6s_infinite] bg-gradient-to-r from-transparent via-fg/[0.07] to-transparent;
 }
+
+@supports (padding: env(safe-area-inset-bottom)) {
+  body {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+@media (orientation: landscape) and (max-height: 500px) {
+  .bottom-nav-safe {
+    padding-bottom: 0;
+  }
+}

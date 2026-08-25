@@ -102,7 +102,7 @@ export default function ProfileView() {
   });
   const [name, setName] = useState("");
   const [bio, setBio] = useState("");
-  const [avatarColor, setAvatarColor] = useState("#e50914");
+  const [avatarColor, setAvatarColor] = useState("#c41230");
   const [avatarColors, setAvatarColors] = useState<string[]>([]);
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
@@ -437,7 +437,7 @@ export default function ProfileView() {
         <div
           className="pointer-events-none absolute inset-x-0 top-0 h-full opacity-[0.13]"
           style={{
-            background: `radial-gradient(600px 220px at 15% 0%, ${heroGlow}, transparent), radial-gradient(500px 200px at 85% 0%, #e50914, transparent)`,
+            background: `radial-gradient(600px 220px at 15% 0%, ${heroGlow}, transparent), radial-gradient(500px 200px at 85% 0%, #c41230, transparent)`,
           }}
         />
         <div aria-hidden className="h-16 sm:h-24" />
@@ -702,7 +702,7 @@ export default function ProfileView() {
                             className="h-full rounded-full transition-all duration-1000 ease-out"
                             style={{
                               width: `${(count / tasteTop[0][1]) * 100}%`,
-                              background: `linear-gradient(90deg, ${user.avatarColor}, #e50914)`,
+                              background: `linear-gradient(90deg, ${user.avatarColor}, #c41230)`,
                               opacity: 0.45 + (1 - i * 0.09),
                             }}
                           />
@@ -796,7 +796,7 @@ export default function ProfileView() {
                 <span className="flex h-14 w-14 items-center justify-center rounded-full bg-fg/5">
                   <HeartIcon className="h-7 w-7 text-zinc-600" />
                 </span>
-                <p className="mt-4 font-medium text-zinc-300">Пока пусто</p>
+                <p className="mt-4 font-medium text-zinc-600 dark:text-zinc-300">Пока пусто</p>
                 <p className="mt-1 max-w-sm text-sm text-zinc-500">
                   Нажимайте на сердечко на карточках фильмов — они появятся здесь
                 </p>
@@ -866,7 +866,7 @@ export default function ProfileView() {
                 <span className="flex h-14 w-14 items-center justify-center rounded-full bg-fg/5">
                   <PlayIcon className="h-6 w-6 text-zinc-600" />
                 </span>
-                <p className="mt-4 font-medium text-zinc-300">
+                <p className="mt-4 font-medium text-zinc-600 dark:text-zinc-300">
                   Вы ещё ничего не смотрели
                 </p>
                 <Link

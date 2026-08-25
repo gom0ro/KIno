@@ -4,9 +4,9 @@ import { useEffect, useState, type ComponentType } from "react";
 import { MOVIES } from "@/lib/movies";
 import MovieGrid from "@/components/MovieGrid";
 import {
-  PlayIcon,
-  ClockIcon,
-  CheckIcon,
+  EyeIcon,
+  BookmarkIcon,
+  CheckCircleIcon,
   type IconProps,
 } from "@/components/icons";
 import {
@@ -19,9 +19,9 @@ import {
 } from "@/lib/lists";
 
 const ICONS: Record<ListKey, ComponentType<IconProps>> = {
-  watching: PlayIcon,
-  planned: ClockIcon,
-  watched: CheckIcon,
+  watching: EyeIcon,
+  planned: BookmarkIcon,
+  watched: CheckCircleIcon,
 };
 
 export default function ListsView() {
@@ -88,7 +88,7 @@ export default function ListsView() {
       ) : (
         <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-fg/10 py-16 text-center">
           <TabIconEmpty className="h-10 w-10 text-zinc-600" />
-          <p className="mt-4 font-medium text-zinc-300">
+          <p className="mt-4 font-medium text-zinc-600 dark:text-zinc-300">
             Список «{LIST_LABELS[tab]}» пуст
           </p>
           <p className="mt-1 max-w-sm text-sm text-zinc-500">

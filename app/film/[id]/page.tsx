@@ -98,7 +98,7 @@ export default function FilmPage({ params }: Props) {
           className="w-full max-w-[220px] rounded-xl shadow-lg ring-1 ring-fg/10 sm:max-w-[260px]"
         />
 
-        <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-zinc-300">
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-zinc-600 dark:text-zinc-300">
           <RatingBadge rating={movie.rating} />
           <span className="text-zinc-500">
             {movie.votes.toLocaleString("ru-RU")} оценок
@@ -113,7 +113,7 @@ export default function FilmPage({ params }: Props) {
             <Link
               key={g}
               href={`/catalog?genre=${encodeURIComponent(g)}`}
-              className="rounded-full border border-fg/10 bg-fg/5 px-3 py-1 text-xs font-medium text-zinc-300 transition-colors hover:border-accent hover:text-fg"
+              className="rounded-full border border-fg/10 bg-fg/5 px-3 py-1 text-xs font-medium text-zinc-600 dark:text-zinc-300 transition-colors hover:border-accent hover:text-fg"
             >
               {g}
             </Link>
@@ -123,7 +123,7 @@ export default function FilmPage({ params }: Props) {
 
       <section>
         <h2 className="mb-2 text-lg font-bold text-fg">Описание</h2>
-        <p className="leading-relaxed text-zinc-300">{movie.description}</p>
+        <p className="leading-relaxed text-zinc-600 dark:text-zinc-300">{movie.description}</p>
       </section>
 
       <section>
@@ -141,7 +141,7 @@ export default function FilmPage({ params }: Props) {
           </div>
           <div>
             <dt className="text-zinc-500">Страна</dt>
-            <dd className="mt-0.5 text-zinc-200">{movie.country}</dd>
+            <dd className="mt-0.5 text-zinc-700 dark:text-zinc-200">{movie.country}</dd>
           </div>
           <div className="sm:col-span-2">
             <dt className="text-zinc-500">В главных ролях</dt>
@@ -151,7 +151,7 @@ export default function FilmPage({ params }: Props) {
                   {i > 0 && ", "}
                   <Link
                     href={`/catalog?q=${encodeURIComponent(name)}`}
-                    className="text-zinc-200 transition-colors hover:text-accent hover:underline"
+                className="text-zinc-700 dark:text-zinc-200 transition-colors hover:text-accent hover:underline"
                   >
                     {name}
                   </Link>

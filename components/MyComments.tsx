@@ -203,7 +203,7 @@ export default function MyComments() {
                 </div>
               </div>
             ) : (
-              <p className="mt-1 whitespace-pre-wrap break-words text-sm leading-relaxed text-zinc-300">
+              <p className="mt-1 whitespace-pre-wrap break-words text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
                 {c.text}
               </p>
             )}

@@ -3,7 +3,7 @@ import AuthForm from "@/components/AuthForm";
 
 export const metadata: Metadata = {
   title: "Вход",
-  description: "Войдите в аккаунт онлайн-кинотеатра КИНО.",
+  description: "Войдите в аккаунт онлайн-кинотеатра ФИЛЬМИК.",
 };
 
 export default function LoginPage() {

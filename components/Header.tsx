@@ -79,12 +79,14 @@ export default function Header() {
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6">
         <Link
           href="/"
-          className="flex items-center gap-2 text-xl font-black tracking-widest text-fg"
+          className="group flex items-center gap-2.5 text-xl font-extrabold tracking-tight text-fg"
         >
-          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent">
-            <PlayIcon className="h-4 w-4" />
+          <span className="relative flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-br from-accent via-accent to-rose-700 shadow-lg shadow-accent/25 transition-shadow group-hover:shadow-accent/40">
+            <PlayIcon className="h-4 w-4 text-white drop-shadow-sm" />
           </span>
-          КИНО
+          <span className="bg-gradient-to-r from-base-800 via-fg to-zinc-500 bg-clip-text text-transparent dark:from-white dark:via-fg dark:to-zinc-400">
+            ФИЛЬМИК
+          </span>
         </Link>
 
         <HeaderSearch />

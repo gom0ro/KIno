@@ -60,7 +60,7 @@ export default function RatingStars({ movieId }: { movieId: string }) {
             <svg
               viewBox="0 0 24 24"
               className={`h-5 w-5 transition-colors ${
-                v <= shown ? "fill-amber-400" : "fill-zinc-700"
+                v <= shown ? "fill-amber-400" : "fill-zinc-300 dark:fill-zinc-700"
               }`}
             >
               <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
@@ -75,7 +75,7 @@ export default function RatingStars({ movieId }: { movieId: string }) {
         <button
           type="button"
           onClick={() => setRating(movieId, null)}
-          className="text-xs text-zinc-500 underline transition-colors hover:text-zinc-300"
+          className="text-xs text-zinc-500 underline transition-colors hover:text-zinc-600 dark:hover:text-zinc-300"
         >
           убрать
         </button>

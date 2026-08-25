@@ -268,8 +268,8 @@ export default function HlsPlayer({ src, title, movieId }: Props) {
 
   const pct = duration > 0 ? (time / duration) * 100 : 0;
   const volPct = (muted ? 0 : volume) * 100;
-  const rangeFill = `linear-gradient(to right, #e50914 ${pct}%, rgba(255,255,255,0.25) ${pct}%)`;
-  const volFill = `linear-gradient(to right, #e50914 ${volPct}%, rgba(255,255,255,0.25) ${volPct}%)`;
+  const rangeFill = `linear-gradient(to right, #c41230 ${pct}%, rgba(255,255,255,0.25) ${pct}%)`;
+  const volFill = `linear-gradient(to right, #c41230 ${volPct}%, rgba(255,255,255,0.25) ${volPct}%)`;
 
   const qualityBadge =
     selectedLevel === -1

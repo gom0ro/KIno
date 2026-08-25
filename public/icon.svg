@@ -1,4 +1,37 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-  <rect width="512" height="512" rx="96" fill="#e50914"/>
-  <path d="M200 150l180 106-180 106z" fill="#ffffff"/>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#e50914"/>
+      <stop offset="50%" stop-color="#b20710"/>
+      <stop offset="100%" stop-color="#7a0509"/>
+    </linearGradient>
+    <linearGradient id="shine" x1="128" y1="0" x2="384" y2="512" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="108" fill="url(#bg)"/>
+  <rect width="512" height="512" rx="108" fill="url(#shine)"/>
+  <!-- Film strip perforations left -->
+  <rect x="48" y="80" width="40" height="30" rx="6" fill="#ffffff" fill-opacity="0.15"/>
+  <rect x="48" y="140" width="40" height="30" rx="6" fill="#ffffff" fill-opacity="0.15"/>
+  <rect x="48" y="200" width="40" height="30" rx="6" fill="#ffffff" fill-opacity="0.15"/>
+  <rect x="48" y="262" width="40" height="30" rx="6" fill="#ffffff" fill-opacity="0.15"/>
+  <rect x="48" y="324" width="40" height="30" rx="6" fill="#ffffff" fill-opacity="0.15"/>
+  <rect x="48" y="384" width="40" height="30" rx="6" fill="#ffffff" fill-opacity="0.15"/>
+  <!-- Film strip perforations right -->
+  <rect x="424" y="80" width="40" height="30" rx="6" fill="#ffffff" fill-opacity="0.15"/>
+  <rect x="424" y="140" width="40" height="30" rx="6" fill="#ffffff" fill-opacity="0.15"/>
+  <rect x="424" y="200" width="40" height="30" rx="6" fill="#ffffff" fill-opacity="0.15"/>
+  <rect x="424" y="262" width="40" height="30" rx="6" fill="#ffffff" fill-opacity="0.15"/>
+  <rect x="424" y="324" width="40" height="30" rx="6" fill="#ffffff" fill-opacity="0.15"/>
+  <rect x="424" y="384" width="40" height="30" rx="6" fill="#ffffff" fill-opacity="0.15"/>
+  <!-- Film reel circle -->
+  <circle cx="256" cy="248" r="120" fill="none" stroke="#ffffff" stroke-opacity="0.2" stroke-width="12"/>
+  <circle cx="256" cy="248" r="60" fill="none" stroke="#ffffff" stroke-opacity="0.15" stroke-width="8"/>
+  <!-- Play triangle -->
+  <path d="M220 188l120 60-120 60z" fill="#ffffff" fill-opacity="0.95"/>
+  <!-- Film strip lines top/bottom -->
+  <line x1="88" y1="68" x2="424" y2="68" stroke="#ffffff" stroke-opacity="0.1" stroke-width="4"/>
+  <line x1="88" y1="444" x2="424" y2="444" stroke="#ffffff" stroke-opacity="0.1" stroke-width="4"/>
 </svg>

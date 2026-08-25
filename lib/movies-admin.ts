@@ -6,7 +6,7 @@ const MOVIES_PATH = path.join(process.cwd(), "data", "movies.json");
 const POSTERS_DIR = path.join(process.cwd(), "public", "posters");
 
 const COLOR_PAIRS: Array<[string, string]> = [
-  ["#e50914", "#7f1d1d"],
+  ["#c41230", "#7f1d1d"],
   ["#0ea5e9", "#1e3a8a"],
   ["#22c55e", "#14532d"],
   ["#f97316", "#7c2d12"],

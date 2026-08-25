@@ -53,7 +53,7 @@ export async function POST(req: Request) {
       userId: user.id,
       type: "system",
       message:
-        "Добро пожаловать в КИНО! Добавляйте фильмы в списки, ставьте оценки и оставляйте комментарии.",
+        "Добро пожаловать в ФИЛЬМИК! Добавляйте фильмы в списки, ставьте оценки и оставляйте комментарии.",
     });
     setSessionCookie(user.id);
     return NextResponse.json({ user }, { status: 201 });

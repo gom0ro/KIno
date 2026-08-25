@@ -73,7 +73,7 @@ export default function DataManager() {
         <button
           type="button"
           onClick={() => fileRef.current?.click()}
-          className="flex items-center gap-2 rounded-lg border border-fg/10 px-5 py-2.5 text-sm font-semibold text-zinc-300 transition-colors hover:border-accent hover:text-fg"
+          className="flex items-center gap-2 rounded-lg border border-fg/10 px-5 py-2.5 text-sm font-semibold text-zinc-600 dark:text-zinc-300 transition-colors hover:border-accent hover:text-fg"
         >
           <svg viewBox="0 0 24 24" className="h-4 w-4 fill-current">
             <path d="M19 15h-4v6H9v-6H5l7-7 7 7zM5 4v2h14V4H5z" />

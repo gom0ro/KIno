@@ -17,8 +17,8 @@ const config: Config = {
         },
         fg: "rgb(var(--fg) / <alpha-value>)",
         accent: {
-          DEFAULT: "#e50914",
-          hover: "#f6121d",
+          DEFAULT: "#c41230",
+          hover: "#d91a3a",
         },
         zinc: {
           100: "rgb(var(--z-100) / <alpha-value>)",

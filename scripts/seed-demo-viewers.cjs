@@ -2,7 +2,7 @@ const { PrismaClient } = require("@prisma/client");
 const p = new PrismaClient();
 
 const COLORS = [
-  "#e50914", "#e11d48", "#f97316", "#eab308", "#22c55e",
+  "#c41230", "#e11d48", "#f97316", "#eab308", "#22c55e",
   "#06b6d4", "#3b82f6", "#8b5cf6", "#ec4899",
 ];
 

@@ -219,7 +219,7 @@ export async function createNotification(data: {
 }
 
 export const AVATAR_COLORS = [
-  "#e50914",
+  "#c41230",
   "#e11d48",
   "#f97316",
   "#eab308",

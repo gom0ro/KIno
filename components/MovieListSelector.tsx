@@ -11,6 +11,13 @@ import {
   type ListKey,
 } from "@/lib/lists";
 import { useMe } from "@/hooks/useMe";
+import { EyeIcon, BookmarkIcon, CheckCircleIcon } from "@/components/icons";
+
+const LIST_ICONS: Record<ListKey, typeof EyeIcon> = {
+  watching: EyeIcon,
+  planned: BookmarkIcon,
+  watched: CheckCircleIcon,
+};
 
 export default function MovieListSelector({ movieId }: { movieId: string }) {
   const { me, ready } = useMe();
@@ -53,6 +60,7 @@ export default function MovieListSelector({ movieId }: { movieId: string }) {
       <div className="flex overflow-hidden rounded-lg border border-fg/10">
         {LIST_KEYS.map((key) => {
           const isActive = active === key;
+          const Icon = LIST_ICONS[key];
           return (
             <button
               key={key}
@@ -68,18 +76,7 @@ export default function MovieListSelector({ movieId }: { movieId: string }) {
                   : "bg-fg/5 text-zinc-400 hover:bg-fg/10 hover:text-fg"
               } ${key !== LIST_KEYS[0] ? "border-l border-fg/5" : ""}`}
             >
-              <svg
-                viewBox="0 0 24 24"
-                fill={isActive ? "currentColor" : "none"}
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden
-                className="h-3.5 w-3.5"
-              >
-                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-              </svg>
+              <Icon className="h-3.5 w-3.5" />
               {LIST_LABELS[key]}
             </button>
           );

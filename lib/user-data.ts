@@ -67,7 +67,7 @@ export function applyBackup(raw: unknown): ImportResult {
     (raw as BackupFile).app !== "kino" ||
     (raw as BackupFile).version !== 1
   ) {
-    throw new Error("Файл не является резервной копией КИНО");
+    throw new Error("Файл не является резервной копией ФИЛЬМИК");
   }
 
   const data = raw as Partial<BackupFile>;

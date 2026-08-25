@@ -9,7 +9,7 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: "Топ-50 зрителей",
   description:
-    "Рейтинг самых активных зрителей КИНО по суммарным часам просмотра.",
+    "Рейтинг самых активных зрителей ФИЛЬМИК по суммарным часам просмотра.",
 };
 
 const RANK_STYLES = [

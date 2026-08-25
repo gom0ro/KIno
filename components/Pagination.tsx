@@ -40,7 +40,7 @@ export default function Pagination({
       className="mt-8 flex flex-wrap items-center justify-center gap-2"
     >
       {page > 1 && (
-        <Link href={buildHref(filters, page - 1)} className={`${linkBase} border border-fg/10 text-zinc-300 hover:border-accent hover:text-fg`}>
+        <Link href={buildHref(filters, page - 1)} className={`${linkBase} border border-fg/10 text-zinc-600 dark:text-zinc-300 hover:border-accent hover:text-fg`}>
           ← Назад
         </Link>
       )}
@@ -53,7 +53,7 @@ export default function Pagination({
           className={
             p === page
               ? `${linkBase} bg-accent text-white`
-              : `${linkBase} border border-fg/10 text-zinc-300 hover:border-accent hover:text-fg`
+              : `${linkBase} border border-fg/10 text-zinc-600 dark:text-zinc-300 hover:border-accent hover:text-fg`
           }
         >
           {p}
@@ -61,7 +61,7 @@ export default function Pagination({
       ))}
 
       {page < pages && (
-        <Link href={buildHref(filters, page + 1)} className={`${linkBase} border border-fg/10 text-zinc-300 hover:border-accent hover:text-fg`}>
+        <Link href={buildHref(filters, page + 1)} className={`${linkBase} border border-fg/10 text-zinc-600 dark:text-zinc-300 hover:border-accent hover:text-fg`}>
           Вперёд →
         </Link>
       )}

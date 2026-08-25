@@ -2,8 +2,8 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "КИНО — смотреть фильмы онлайн",
-    short_name: "КИНО",
+    name: "ФИЛЬМИК — смотреть фильмы онлайн",
+    short_name: "ФИЛЬМИК",
     description:
       "Онлайн-кинотеатр: популярные фильмы, новинки и рекомендации.",
     start_url: "/",
